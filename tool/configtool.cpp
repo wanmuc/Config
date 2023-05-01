@@ -68,6 +68,7 @@ class )" + class_name +
 
 int readDemoCfg() {
   MysvrCfg cfg;
+  cout << "usage: configtool cfg_file_name" << endl;
   cout << "read demo cfg mysvr.cfg" << endl;
   cfg.Load("./mysvr.cfg");
   cout << "ip = " << cfg.ip() << endl;
