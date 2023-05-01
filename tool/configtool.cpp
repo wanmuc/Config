@@ -2,7 +2,7 @@
 #include <regex>
 #include <string>
 
-#include "../config.hpp"
+#include "MysvrCfg.hpp"
 
 using namespace std;
 
@@ -55,6 +55,7 @@ class )" + class_name +
     }
 )" + cfg_read_content +
                    R"(
+    return true;
   }
 )" + class_func_content +
                    R"(
@@ -65,7 +66,20 @@ class )" + class_name +
   return 0;
 }
 
+int readDemoCfg() {
+  MysvrCfg cfg;
+  cout << "read demo cfg mysvr.cfg" << endl;
+  cfg.Load("./mysvr.cfg");
+  cout << "ip = " << cfg.ip() << endl;
+  cout << "port = " << cfg.port() << endl;
+  cout << "conn_pool_size = " << cfg.conn_pool_size() << endl;
+  return 0;
+}
+
 int main(int argc, char *argv[]) {
+  if (argc == 1) {
+    return readDemoCfg();
+  }
   if (argc != 2) {
     cout << "usage: configtool mysvr.cfg" << endl;
     return -1;

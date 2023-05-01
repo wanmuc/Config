@@ -12,6 +12,8 @@ class MysvrCfg {
     ini.GetIntValue("pool", "conn_pool_size", conn_pool_size_, 0);
     ini.GetIntValue("server", "port", port_, 0);
     ini.GetStrValue("server", "ip", ip_, "");
+
+    return true;
   }
   int64_t conn_pool_size() { return conn_pool_size_; }
   int64_t port() { return port_; }
